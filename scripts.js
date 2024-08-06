@@ -20,7 +20,7 @@ const maleAgeScores = [-9, -4, 0, 3, 6, 8, 10, 11, 12, 13];
 const HDLranges = [0, 40, 50, 60];
 const HDLscores = [2, 1, 0, -1];
 
-let male = false;
+let male = true;
 let smoker = false;
 let cholesterol = 290;
 let HDLcholesterol = 0;
