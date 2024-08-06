@@ -20,13 +20,43 @@ const maleAgeScores = [-9, -4, 0, 3, 6, 8, 10, 11, 12, 13];
 const HDLranges = [0, 40, 50, 60];
 const HDLscores = [2, 1, 0, -1];
 
+// Lookup tables for blood pressure
+const BPranges = [0, 120, 130, 140, 160];
+const femaleTBPscores = [0, 3, 4, 5, 6];
+const femaleUTBPscores = [0, 1, 2, 3, 4];
+const maleTBPscores = [0, 1, 2, 2, 3];
+const maleUTBPscores = [0, 0, 1, 1, 2];
+
 let male = true;
 let smoker = false;
+let BPtreated = false;
 let cholesterol = 290;
 let HDLcholesterol = 0;
 let BloodPressure = 0;
 let age = 25;
 let score = 0;
+
+function calculateBPScore(){
+    let i = 0;
+
+    while(i < BPranges.length - 1){
+        if(BloodPressure >= BPranges[i] && BloodPressure < BPranges[i + 1]){
+            break;
+        }
+        i++;
+    }
+
+    if (male == true){
+        if (BPtreated == true){
+            return maleTBPscores[i];
+        }
+        return maleUTBPscores[i];
+    }
+    if (BPtreated == true){
+        return femaleTBPscores[i];
+    }
+    return femaleUTBPscores[i];
+}
 
 function calculateHDLScore(){
     let i = 0;
