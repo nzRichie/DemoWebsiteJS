@@ -27,20 +27,64 @@ const femaleUTBPscores = [0, 1, 2, 3, 4];
 const maleTBPscores = [0, 1, 2, 2, 3];
 const maleUTBPscores = [0, 0, 1, 1, 2];
 
+// Lookup tables for total scores and percentages
+const femaleTotalRanges = [-20, 9, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+const maleTotalRanges = [-20, 1, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+const tenYearRiskFemale = ["< 1%", "1%", "2%", "3%", "4%", "5%", "6%", "8%", "11%", "14%", "17%", "22%", "27%", "> 30%"];
+const tenYearRiskMale = ["< 1%", "1%", "2%", "3%", "4%", "5%", "6%", "8%", "10%", "12%", "16%", "20%", "25%", "> 30%"];
+
 let male = true;
-let smoker = false;
-let BPtreated = false;
+let smoker = true;
+let BPtreated = true;
 let cholesterol = 290;
-let HDLcholesterol = 0;
-let BloodPressure = 0;
+let HDLcholesterol = 40;
+let bloodPressure = 100;
 let age = 25;
 let score = 0;
+
+console.log("total score " + calculateTotalScore());
+console.log("percentage: " + calculateRisk());
+
+function calculateTotalScore(){
+
+    score = 0;
+
+    score += calculateAgeScore();
+    score += calculateBPScore();
+    score += calculateCholesterol();
+    score += calculateSmokerScore();
+    score += calculateHDLScore();
+
+    return score;
+}
+
+function calculateRisk(){
+    let i = 0;
+
+    if (male == true){
+        while (i < maleTotalRanges.length - 1){
+            if (score < maleTotalRanges[i + 1] && score >= maleTotalRanges[i]){
+                break;
+            }
+            i++;
+        }
+        return tenYearRiskMale[i];
+    }
+    while (i < FemaleTotalRanges.length - 1){
+        if (score < FemaleTotalRanges[i + 1] && score >= FemaleTotalRanges[i]){
+            break;
+        }
+        i++;
+    }
+    return tenYearRiskFemale[i];
+
+}
 
 function calculateBPScore(){
     let i = 0;
 
     while(i < BPranges.length - 1){
-        if(BloodPressure >= BPranges[i] && BloodPressure < BPranges[i + 1]){
+        if(bloodPressure < BPranges[i + 1] && bloodPressure >= BPranges[i] ){
             break;
         }
         i++;
@@ -62,7 +106,7 @@ function calculateHDLScore(){
     let i = 0;
 
     while(i < HDLranges.length - 1){
-        if (HDLcholesterol >= HDLranges[i] && HDLcholesterol < HDLranges[i + 1]){
+        if (HDLcholesterol < HDLranges[i + 1] && HDLcholesterol >= HDLranges[i]){
             break;
         }
         i++;
@@ -76,7 +120,7 @@ function calculateAgeScore(){
     let i = 0;
 
     while(i < ageRanges.length - 1){
-        if (age >= ageRanges[i] && age < ageRanges[i + 1]){
+        if (age < ageRanges[i + 1] && age >= ageRanges[i]){
             break;
         }
         i++;
@@ -98,7 +142,7 @@ function calculateSmokerScore(){
     // Find the appropriate age range for table lookup.
     let i = 0;
     while(i < cholSmokAgeRanges.length - 1){
-        if (age >= cholSmokAgeRanges[i] && age < cholSmokAgeRanges[i + 1]){
+        if (age < cholSmokAgeRanges[i + 1] && age >= cholSmokAgeRanges[i]){
             break;
         }
         i++;
@@ -118,7 +162,7 @@ function calculateCholesterol(){
 
     // find the appropriate age index for lookup
     while(i < cholSmokAgeRanges.length - 1){
-        if (age >= cholSmokAgeRanges[i] && age < cholSmokAgeRanges[i + 1]){
+        if (age < cholSmokAgeRanges[i + 1] && age >= cholSmokAgeRanges[i] ){
             break;
         }
         i++;
@@ -126,7 +170,7 @@ function calculateCholesterol(){
 
     // find the appropriate cholesterol index for lookup
     while(j < cholesterolRanges.length - 1){
-        if (cholesterol >= cholesterolRanges[j] && cholesterol < cholesterolRanges[j + 1]){
+        if (cholesterol < cholesterolRanges[j + 1] && cholesterol >= cholesterolRanges[j] ){
             break;
         }
         j++;
@@ -138,4 +182,3 @@ function calculateCholesterol(){
     }
     return femaleCholesterolScores[i][j];
 }
-
