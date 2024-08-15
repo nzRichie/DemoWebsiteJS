@@ -35,7 +35,9 @@ nextPage.onclick = function(){
 
     // If we arrived on the last page, hide the next page button.
     if (pageIndex == 4){
+        calculateTotalScore();
         nextPage.style.visibility = 'hidden';
+        calculateTotalScore();
     }
     handleProgressBar();
 }
@@ -107,9 +109,7 @@ ageSpan.innerHTML = ageRangeSlider.value;
 ageRangeSlider.oninput = function(){
     ageSpan.innerHTML = this.value;
     age = this.value;
-    console.log(age);
 }
-
 // PAGE TWO SCRIPTS
 
 
@@ -143,4 +143,15 @@ function treatedButtonClick(){
         untreatedButton.style.backgroundColor = "#a8a8a8";
         treatedButton.style.backgroundColor = "#b45dbb";
     }
+}
+
+// PAGE FIVE SCRIPTS
+
+displayHeader = document.getElementById('risk-display');
+scoreHeader = document.getElementById('score-display');
+
+function displayScore(risk, score){
+    displayHeader.innerHTML = risk;
+    scoreHeader.innerHTML = "Final Score: " + score;
+
 }

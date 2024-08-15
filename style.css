@@ -306,3 +306,14 @@ select {
 #treated-button-false {
     background-color: #b45dbb;
 }
+
+/* Fifth page styling */
+
+#page-5 {
+    display: flex;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

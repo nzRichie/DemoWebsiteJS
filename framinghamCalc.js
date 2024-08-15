@@ -74,6 +74,7 @@ function calculateTotalScore(){
     score += calculateSmokerScore();
     score += calculateHDLScore();
     riskPercent = calculateRisk();
+    displayScore(riskPercent, score);
 }
 
 // return the total 
@@ -81,7 +82,7 @@ function calculateRisk(){
     let i = 0;
 
     if (male == true){
-        while (i < maleTotalRanges.length - 1){
+        while (i < maleTotalRanges.length - 2){
             if (score < maleTotalRanges[i + 1] && score >= maleTotalRanges[i]){
                 break;
             }
@@ -89,8 +90,8 @@ function calculateRisk(){
         }
         return tenYearRiskMale[i];
     }
-    while (i < FemaleTotalRanges.length - 1){
-        if (score < FemaleTotalRanges[i + 1] && score >= FemaleTotalRanges[i]){
+    while (i < femaleTotalRanges.length - 2){
+        if (score < femaleTotalRanges[i + 1] && score >= femaleTotalRanges[i]){
             break;
         }
         i++;
