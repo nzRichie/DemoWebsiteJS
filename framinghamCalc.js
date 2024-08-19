@@ -25,8 +25,8 @@ const maleTBPscores = [0, 1, 2, 2, 3];
 const maleUTBPscores = [0, 0, 1, 1, 2];
 
 // Lookup tables for total scores and percentages
-const femaleTotalRanges = [-20, 9, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-const maleTotalRanges = [-20, 1, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+const femaleTotalRanges = [-30, 9, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+const maleTotalRanges = [-30, 1, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 const tenYearRiskFemale = ["< 1%", "1%", "2%", "3%", "4%", "5%", "6%", "8%", "11%", "14%", "17%", "22%", "27%", "> 30%"];
 const tenYearRiskMale = ["< 1%", "1%", "2%", "3%", "4%", "5%", "6%", "8%", "10%", "12%", "16%", "20%", "25%", "> 30%"];
 
@@ -77,21 +77,29 @@ function calculateTotalScore(){
     displayScore(riskPercent, score);
 }
 
-// return the total 
+// return the percent risk based on the score
 function calculateRisk(){
     let i = 0;
 
+    // risk for males
     if (male == true){
         while (i < maleTotalRanges.length - 2){
             if (score < maleTotalRanges[i + 1] && score >= maleTotalRanges[i]){
+                if (i > 0){
+                    i--;
+                }
                 break;
             }
             i++;
         }
         return tenYearRiskMale[i];
     }
+    // risk for females
     while (i < femaleTotalRanges.length - 2){
         if (score < femaleTotalRanges[i + 1] && score >= femaleTotalRanges[i]){
+            if (i > 0){
+                i--;
+            }
             break;
         }
         i++;
@@ -103,12 +111,15 @@ function calculateRisk(){
 // Return score based on gender, blood-pressure, and treated status
 function calculateBPScore(){
 
+    // for males
     if (male == true){
         if (BPtreated == true){
             return maleTBPscores[bloodPressureIndex];
         }
         return maleUTBPscores[bloodPressureIndex];
     }
+
+    // for females
     if (BPtreated == true){
         return femaleTBPscores[bloodPressureIndex];
     }
@@ -125,7 +136,7 @@ function calculateHDLScore(){
 function calculateAgeScore(){
     
     let i = 0;
-
+    // Use the age to find the "age range"
     while(i < ageRanges.length - 1){
         if (age < ageRanges[i + 1] && age >= ageRanges[i]){
             break;
@@ -133,6 +144,7 @@ function calculateAgeScore(){
         i++;
     }
 
+    // return the male or female scores
     if (male == true){
         return maleAgeScores[i];
     }
