@@ -1,134 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Title and imports -->
+    <title>Framingham Risk Score Calculator</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- JS related to calculations of the risk scores -->
+    <script defer src="framinghamCalc.js"></script>
+    <!-- JS related to DOM manipulation -->
+    <script defer src="domScripts.js"></script>
+    <script defer src="tests.js"></script>
+  </head>
 
-    <head>
-        <!-- Title and imports -->
-        <title>Framingham Risk Score Calculator</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <script defer src="framinghamCalc.js"></script>
-        <script defer src="domScripts.js"></script>
-    </head>
+  <body>
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-header-text">Framingham Score Calculator</h1>
+      </div>
 
-    <body>
+      <!-- Divs that make up the progress bar -->
+      <div class="progress-bar">
+        <div class="circle p1"></div>
+        <div class="line p2"></div>
+        <div class="circle p2"></div>
+        <div class="line p3"></div>
+        <div class="circle p3"></div>
+        <div class="line p4"></div>
+        <div class="circle p4"></div>
+        <div class="line p5"></div>
+        <div class="circle p5"></div>
+      </div>
 
-        <div class="card">
-
-            <div class="card-header">
-
-                <h1 class="card-header-text">Framingham Score Calculator</h1>
-
+      <div class="form-content">
+        <!-- Page 1 content -->
+        <div id="page-1">
+          <div>
+            <h1>I am a:</h1>
+            <!-- Buttons to select gender -->
+            <div class="gender-button-wrapper">
+              <button class="gender-select" id="maleButton">Male</button>
+              <button class="gender-select" id="femaleButton">Female</button>
             </div>
-
-            <div class="progress-bar">
-                <div class="circle p1"></div>
-                <div class="line p2"></div>
-                <div class="circle p2"></div>
-                <div class="line p3"></div>
-                <div class="circle p3"></div>
-                <div class="line p4"></div>
-                <div class="circle p4"></div>
-                <div class="line p5"></div>
-                <div class="circle p5"></div>
+          </div>
+          <div>
+            <h1>I am <span id="ageSpan"></span> years old</h1>
+            <!-- Slider to select age -->
+            <div class="range-slider-wrapper">
+              <input
+                type="range"
+                min="20"
+                max="80"
+                class="slider"
+                id="ageSlider"
+              />
             </div>
-
-            <div class="form-content">
-
-                <!-- Page 1 content -->
-                <div id="page-1">
-                    <div>
-                        <h1>I am a:</h1>
-                        <div class="gender-button-wrapper">
-                            <button class="gender-select" id="maleButton">Male</button>
-                            <button class="gender-select" id="femaleButton">Female</button>
-                        </div>
-                    </div>
-                    <div>
-                        <h1>I am <span id="ageSpan"></span> years old</h1>
-                        <div class="range-slider-wrapper">
-                            <input type="range" min="20" max="80" class="slider" id="ageSlider">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Page 2 content -->
-                <div id="page-2">
-                    <div>
-                        <h1>My cholesterol levels are:</h1>
-                        <p class="subtext">&#40;mg/dL&#41;</p>
-                    </div>
-                    <div class="cholesterol-select">
-                        <select>
-                            <option value="0" onclick="setCholesterolIndex(0)">Under 160</option>
-                            <option value="1" onclick="setCholesterolIndex(1)">160-199</option>
-                            <option value="2" onclick="setCholesterolIndex(2)">200-239</option>
-                            <option value="3" onclick="setCholesterolIndex(3)">240-279</option>
-                            <option value="4" onclick="setCholesterolIndex(4)">280 or more</option>
-                        </select>
-                    </div>
-                    <div>
-                        <h1>My HDL cholesterol is:</h1>
-                        <p class="subtext">&#40;mg/dL&#41;</p>
-                    </div>
-                    <div class="cholesterol-select">
-                        <select>
-                            <option value="0" onclick="setHDLCholesterolIndex(0)">Under 40</option>
-                            <option value="1" onclick="setHDLCholesterolIndex(1)">40-49</option>
-                            <option value="2" onclick="setHDLCholesterolIndex(2)">50-59</option>
-                            <option value="3" onclick="setHDLCholesterolIndex(3)">60 or more</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Page 3 content -->
-                <div id="page-3">
-                    <div>
-                        <h1>I am a:</h1>
-                    </div>
-                    <div class="smoker-buttons">
-                        <button class="select-button" id="smoker-button-false" onclick="setSmokerValue(false)">Non-smoker</button>
-                        <button class="select-button" id="smoker-button-true" onclick="setSmokerValue(true)">Smoker</button>
-                    </div>
-                </div>
-
-                <!-- Page 4 content -->
-                <div id="page-4">
-                    <div>
-                        <h1>My systolic blood pressure is:</h1>
-                        <p class="subtext">&#40;mm Hg&#41;</p>
-                    </div>
-                    <div class="bp-select">
-                        <select>
-                            <option value="0" onclick="setBPIndex(0)">Under 120</option>
-                            <option value="1" onclick="setBPIndex(1)">120-129</option>
-                            <option value="2" onclick="setBPIndex(2)">130-139</option>
-                            <option value="3" onclick="setBPIndex(3)">140-159</option>
-                            <option value="4" onclick="setBPIndex(4)">160 or more</option>
-                        </select>
-                    </div>
-                    <div>
-                        <h1>My blood pressure is:</h1>
-                    </div>
-                    <div class="treated-buttons">
-                        <button id="treated-button-false" class="select-button" onclick="setBPTreated(false)">Untreated</button>
-                        <button id="treated-button-true" class="select-button" onclick="setBPTreated(true)">Treated</button>
-                    </div>
-                </div>
-
-                <!-- Page 5 content -->
-                <div id="page-5">
-                    <h1 id="score-display">Final score: </h1>
-                    <p>Your risk of heart disease in the next 10 years is: <span id="risk-display"></span></p>
-                </div>
-
-            </div>
-
-            <div class="navigation">
-                <button id="previousPage">Previous</button>
-                <button id="nextPage">Next</button>
-            </div>
-            <a href="index.html" id="reset-form">Restart</a>
+          </div>
         </div>
 
-    </body>
+        <!-- Page 2 content -->
+        <div id="page-2">
+          <div>
+            <h1>My cholesterol levels are:</h1>
+            <p class="subtext">&#40;mg/dL&#41;</p>
+          </div>
+          <div class="cholesterol-select">
+            <!-- Dropdown for cholesterol levels -->
+            <select>
+              <option value="0" onclick="setCholesterolIndex(0)">
+                Under 160
+              </option>
+              <option value="1" onclick="setCholesterolIndex(1)">
+                160-199
+              </option>
+              <option value="2" onclick="setCholesterolIndex(2)">
+                200-239
+              </option>
+              <option value="3" onclick="setCholesterolIndex(3)">
+                240-279
+              </option>
+              <option value="4" onclick="setCholesterolIndex(4)">
+                280 or more
+              </option>
+            </select>
+          </div>
+          <div>
+            <h1>My HDL cholesterol is:</h1>
+            <p class="subtext">&#40;mg/dL&#41;</p>
+          </div>
+          <div class="cholesterol-select">
+            <!-- Dropdown for HDL cholesterol -->
+            <select>
+              <option value="0" onclick="setHDLCholesterolIndex(0)">
+                Under 40
+              </option>
+              <option value="1" onclick="setHDLCholesterolIndex(1)">
+                40-49
+              </option>
+              <option value="2" onclick="setHDLCholesterolIndex(2)">
+                50-59
+              </option>
+              <option value="3" onclick="setHDLCholesterolIndex(3)">
+                60 or more
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Page 3 content -->
+        <div id="page-3">
+          <div>
+            <h1>I am a:</h1>
+          </div>
+          <!-- Buttons to select smoker/non-smoker options -->
+          <div class="smoker-buttons">
+            <button
+              class="select-button"
+              id="smoker-button-false"
+              onclick="setSmokerValue(false)"
+            >
+              Non-smoker
+            </button>
+            <button
+              class="select-button"
+              id="smoker-button-true"
+              onclick="setSmokerValue(true)"
+            >
+              Smoker
+            </button>
+          </div>
+        </div>
+
+        <!-- Page 4 content -->
+        <div id="page-4">
+          <div>
+            <h1>My systolic blood pressure is:</h1>
+            <p class="subtext">&#40;mm Hg&#41;</p>
+          </div>
+          <div class="bp-select">
+            <!-- drop down for blood pressure -->
+            <select>
+              <option value="0" onclick="setBPIndex(0)">Under 120</option>
+              <option value="1" onclick="setBPIndex(1)">120-129</option>
+              <option value="2" onclick="setBPIndex(2)">130-139</option>
+              <option value="3" onclick="setBPIndex(3)">140-159</option>
+              <option value="4" onclick="setBPIndex(4)">160 or more</option>
+            </select>
+          </div>
+          <!-- Buttons for treated/untreated blood pressure -->
+          <div>
+            <h1>My blood pressure is:</h1>
+          </div>
+          <div class="treated-buttons">
+            <button
+              id="treated-button-false"
+              class="select-button"
+              onclick="setBPTreated(false)"
+            >
+              Untreated
+            </button>
+            <button
+              id="treated-button-true"
+              class="select-button"
+              onclick="setBPTreated(true)"
+            >
+              Treated
+            </button>
+          </div>
+        </div>
+
+        <!-- Page 5 content -->
+        <div id="page-5">
+          <h1 id="score-display">Final score:</h1>
+          <p>
+            Your risk of heart disease in the next 10 years is:
+            <span id="risk-display"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- bottom navigation bar -->
+      <div class="navigation">
+        <button id="previousPage">Previous</button>
+        <button id="nextPage">Next</button>
+      </div>
+
+      <!-- Reset form button -->
+      <a href="index.html" id="reset-form">Reset</a>
+    </div>
+  </body>
 </html>

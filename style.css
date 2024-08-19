@@ -1,148 +1,141 @@
-/* 
-Theme Colors:
-
-#2e0f38
-#1a2c54
-#8351a8
-#4d7b93
-#b45dbb */
-
+/* Global and background styles */
 button {
-    transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 button:hover {
-    filter:brightness(0.85);
-    cursor:pointer;
+  filter: brightness(0.85);
+  cursor: pointer;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
 }
 
 body {
-    background-color: #2e0f38;
-    align-items: center;
+  background-color: #2e0f38;
+  align-items: center;
 }
 
+/* Style for the card and header that contain all of the content */
+
 .card {
-    box-shadow: 0 20px 20px 0  rgba(0,0,0,0.7);
-    position: absolute;
-    height: 80%;
-    width: 450px;
-    min-height: auto;
-    min-width: auto;
-    border-radius: 15pt;
-    background-color: #dadada;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 80%;
+  width: 450px;
+  min-height: auto;
+  min-width: auto;
+  border-radius: 15pt;
+  background-color: #dadada;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .card-header {
-    position: absolute;
-    top:0%;
-    background-color: #b45dbb;
-    width: 100%;
-    height: 15%;
-    border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0%;
+  background-color: #b45dbb;
+  width: 100%;
+  height: 15%;
+  border-radius: 15px 15px 0 0;
 }
 
 .card-header-text {
-    color: #2e0f38;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 30px;
+  color: #2e0f38;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 30px;
 }
 
 /* Styling for navigation */
 
 .navigation {
-    position: absolute;
-    top: 87%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
 }
-.navigation>button {
-    margin: 45px;
-    width:120px;
-    height:60px;
-    background-color: #b45dbb;
-    border-radius: 8px;
-    border: none;
+.navigation > button {
+  margin: 45px;
+  width: 120px;
+  height: 60px;
+  background-color: #b45dbb;
+  border-radius: 8px;
+  border: none;
 }
 #reset-form {
-
-    position: absolute;
-    top: 95%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    text-decoration: underline;
-    color: #a8a8a8;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  text-decoration: underline;
+  color: #a8a8a8;
 }
 
 /* Styling for the progress bar */
 
 .progress-bar {
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, 0);
-    display: flex;
-    width: 75%;
-    height: 40px;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow: hidden;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  display: flex;
+  width: 75%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .circle {
-    width: 20px;
-    height: 20px;
-    background-color: #a8a8a8;
-    border-radius: 50%;
-    z-index: 2;
+  width: 20px;
+  height: 20px;
+  background-color: #a8a8a8;
+  border-radius: 50%;
+  z-index: 2;
 }
 
 .line {
-    transform: translate(0, 8px);
-    width: 80px;
-    height: 4px;
-    background-color: #a8a8a8;
-    z-index: 1;
+  transform: translate(0, 8px);
+  width: 80px;
+  height: 4px;
+  background-color: #a8a8a8;
+  z-index: 1;
 }
 
-.p1{
-    background-color: #b45dbb;
+.p1 {
+  background-color: #b45dbb;
 }
 
 /* Styling for main page content */
 
 h1 {
-    font-size: large;
-    padding: 20px;
+  font-size: large;
+  padding: 20px;
 }
 
 .form-content {
-    position: relative;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 60%;
-    width: 75%;
-    text-align: center;
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 75%;
+  text-align: center;
 }
 
 /* Style for all of the pages */
@@ -151,145 +144,142 @@ h1 {
 #page-3,
 #page-4,
 #page-5 {
-    display: flex;
-    padding-top: 20px;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 /* First page styling */
 
 .gender-button-wrapper {
-    padding-bottom: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .gender-select {
-    width:100px;
-    height:50px;
-    background-color: #b45dbb;
-    border-radius: 8px;
-    border: none;
+  width: 100px;
+  height: 50px;
+  background-color: #b45dbb;
+  border-radius: 8px;
+  border: none;
 }
 
 #femaleButton {
-    background-color: #a8a8a8;
+  background-color: #a8a8a8;
 }
 
-
 #ageSlider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 8px;
-    border-radius: 5px;  
-    background: #a8a8a8;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #a8a8a8;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%; 
-    background: #b45dbb;
-    cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #b45dbb;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #b45dbb;
-    cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #b45dbb;
+  cursor: pointer;
 }
 
 /* Second page styling */
 
-.subtext{
-    margin: 0;
-    color: #a8a8a8;
-    font-size: 14px;
+.subtext {
+  margin: 0;
+  color: #a8a8a8;
+  font-size: 14px;
 }
 
-#page-2>div>h1 {
-    margin-top: 10px;
-    padding-bottom: 0px;
+#page-2 > div > h1 {
+  margin-top: 10px;
+  padding-bottom: 0px;
 }
 
 .cholesterol-select {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 select {
-    background-color: #b4b4b4;
-    border: 0;
-    border-radius: 3px;
-    height: 25px;
-    padding-left: 10px;
-
+  background-color: #b4b4b4;
+  border: 0;
+  border-radius: 3px;
+  height: 25px;
+  padding-left: 10px;
 }
 
-
 #chol-button-0 {
-    background-color: #b45dbb;
+  background-color: #b45dbb;
 }
 
 /* Third page styling */
 
 .select-button {
-    position: relative;
-    margin-bottom: 25px;
-    height: 30px;
-    width: 80%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: #a8a8a8;
-    border-radius: 8px;
-    border: none;
+  position: relative;
+  margin-bottom: 25px;
+  height: 30px;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #a8a8a8;
+  border-radius: 8px;
+  border: none;
 }
 
 .smoker-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 #smoker-button-false {
-    background-color: #b45dbb;
+  background-color: #b45dbb;
 }
 
 /* Fourth page styling */
 
 .bp-select {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .treated-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 #treated-button-false {
-    background-color: #b45dbb;
+  background-color: #b45dbb;
 }
